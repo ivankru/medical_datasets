@@ -201,7 +201,7 @@ def calculate_suv_factor_kudin(dcm_path):
 if __name__ == "__main__":
     raw_data = "/ayb/vol1/kudin/dev/datasets/raw_data_part_1/"
     nii_save_path = "/ayb/vol1/kruzhilov/nnUnet/nnUNet_preprocessed/Task001_TCIA/imagesTS"
-    pet_dataset_path = "/ayb/vol1/kruzhilov/datasets/dataset_v_5/test"
+    pet_dataset_path = "/ayb/vol1/kruzhilov/datasets/dataset_v_5/val"
     # study = "0.8.290.0.5618086.8.0.0.3576454119.76021.9253413059.52961"    
     # study = "1.0.329.466197.3.333.0.6234929077.287.9246067012.360"
     resolution = 256 
@@ -214,7 +214,7 @@ if __name__ == "__main__":
         study_serie_folder = ct_folder(study_ct_folder)
     
         #CT data from a serie into one nii file
-        #ct_nii = load_rescale_dcm(study_serie_folder, new_size=400)
+        ct_nii = load_rescale_dcm(study_serie_folder, new_size=400)
 
         #PET data from a serie into one nii file
         study_serie_folder = os.path.join(study_folder, pet_serie)
@@ -225,10 +225,10 @@ if __name__ == "__main__":
         
         file_name = study + "_0001.nii.gz"
         save_nii_path = os.path.join(nii_save_path, file_name)
-        #nb.save(ct_nii, save_nii_path)
+        nb.save(ct_nii, save_nii_path)
         file_name = study + "_0000.nii.gz"
         save_nii_path = os.path.join(nii_save_path, file_name)
-        #nb.save(pet_nii, save_nii_path)
+        nb.save(pet_nii, save_nii_path)
         #series_type="RECON 2: CT LUNG") CTAC 3.75 MM, WB 3D MAC
         
                 
